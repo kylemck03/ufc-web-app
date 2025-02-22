@@ -53,7 +53,7 @@ func main() {
 
 	//Enable CORS
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000"} // React App URL
+	config.AllowOrigins = []string{"https://ufc-web-app.vercel.app"}
 	config.AllowMethods = []string{"POST", "GET"}
 	r.Use(cors.New(config))
 
@@ -82,7 +82,7 @@ func predictFight(c *gin.Context) {
 	// Log the JSON being sent
 	fmt.Printf("Sending JSON to ML service: %s\n", string(jsonData))
 
-	resp, err := http.Post("http://localhost:8001/predict", "application/json", bytes.NewBuffer(jsonData))
+	resp, err := http.Post("https://ufc-ml-service.onrender.com/predict", "application/json", bytes.NewBuffer(jsonData))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to communicate with prediction service"})
 		return
@@ -90,7 +90,7 @@ func predictFight(c *gin.Context) {
 	defer resp.Body.Close()
 
 	// Log the response status
-	fmt.Printf("ML service response status: %d\n", resp.StatusCode) // Add this
+	fmt.Printf("ML service response status: %d\n", resp.StatusCode)
 
 	var prediction PredictionResponse
 	if err := json.NewDecoder(resp.Body).Decode(&prediction); err != nil {
