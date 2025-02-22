@@ -130,6 +130,8 @@ const FighterForm: React.FC = () => {
         body: JSON.stringify(predictionRequest)
       });
 
+      console.log('Prediction request:', predictionRequest); // Debug log
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

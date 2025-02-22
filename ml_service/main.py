@@ -1,3 +1,4 @@
+import os
 from venv import logger
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -186,4 +187,5 @@ async def predict(request: PredictionRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
