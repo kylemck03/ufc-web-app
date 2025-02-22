@@ -1,0 +1,31 @@
+/* src/App.css */
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.ufc-logo {
+  height: 40px; 
+  width: auto;
+}
+
+.App-header p{
+  font-size: small;
+}
+
+main {
+  padding: 0 20px;
+}
