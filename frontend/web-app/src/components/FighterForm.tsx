@@ -121,6 +121,8 @@ const FighterForm: React.FC = () => {
       }
     };
 
+    console.log('Prediction request:', predictionRequest); // Debug log
+
     try {
       const response = await fetch('http://localhost:8080/predict', {
         method: 'POST',
@@ -129,8 +131,6 @@ const FighterForm: React.FC = () => {
         },
         body: JSON.stringify(predictionRequest)
       });
-
-      console.log('Prediction request:', predictionRequest); // Debug log
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

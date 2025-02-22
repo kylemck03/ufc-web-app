@@ -10,6 +10,8 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
 import logging
+import uvicorn
+
 
 
 app = FastAPI()
@@ -17,7 +19,7 @@ app = FastAPI()
 #Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080"],
+    allow_origins=["http://localhost:8080", "https://ufc-web-app.onrender.com", "https://ufc-web-app.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -186,6 +188,5 @@ async def predict(request: PredictionRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    import uvicorn
     port = int(os.environ.get("PORT", 10000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
