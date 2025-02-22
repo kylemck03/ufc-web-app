@@ -1,6 +1,6 @@
 import './App.css';
 import FighterForm from './components/FighterForm';
-// import logo from './512px-UFC_logo.svg';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
       </header>
       <main>
         <FighterForm /> 
+        <Analytics />
       </main>
     </div>
   );
