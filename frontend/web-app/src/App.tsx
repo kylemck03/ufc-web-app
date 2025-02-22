@@ -18,8 +18,8 @@ function App() {
       </header>
       <main>
         <FighterForm /> 
-        <Analytics />
       </main>
+      <Analytics />
     </div>
   );
 }
