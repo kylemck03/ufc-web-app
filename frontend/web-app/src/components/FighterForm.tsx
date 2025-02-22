@@ -124,7 +124,7 @@ const FighterForm: React.FC = () => {
     console.log('Prediction request:', predictionRequest); // Debug log
 
     try {
-      const response = await fetch('http://localhost:8080/predict', {
+      const response = await fetch('https://ufc-web-app.onrender.com/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
