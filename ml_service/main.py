@@ -1,5 +1,4 @@
 import os
-from venv import logger
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
@@ -9,7 +8,6 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
-import logging
 import uvicorn
 
 
@@ -96,7 +94,6 @@ async def predict(request: PredictionRequest):
         print(f"Fighter 2 data: {fighter2_data}")
 
         # Add logs before and after model prediction
-        logger.info("Making prediction...")
         # prediction logic...
 
         # Convert fighter stats to numpy arrays

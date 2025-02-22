@@ -54,7 +54,16 @@ func main() {
 	//Enable CORS
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"https://ufc-web-app.vercel.app", "http://localhost:3000", "https://ufc-ml-service.onrender.com"}
-	config.AllowMethods = []string{"POST", "GET"}
+	config.AllowMethods = []string{"POST", "GET", "OPTIONS"}
+	config.AllowHeaders = []string{
+		"Origin",
+		"Content-Type",
+		"Accept",
+		"Authorization",
+		"X-Requested-With",
+	}
+	config.ExposeHeaders = []string{"Content-Length"}
+	config.AllowCredentials = true
 	r.Use(cors.New(config))
 
 	// Routes
