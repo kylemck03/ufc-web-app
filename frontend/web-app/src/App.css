@@ -253,32 +253,7 @@
   .desktop-only {
     display: none;
   }
-}
-
-.prediction-result {
-  max-width: 100%; /* Ensure content doesn't overflow container */
-  padding: 20px;
-  margin: 20px auto;
-  word-wrap: break-word; /* Ensures text wraps instead of overflowing */
-  overflow-x: hidden; /* Prevents horizontal scrolling */
-}
-
-.prediction-details {
-  display: flex;
-  flex-direction: column; /* Stack elements vertically on mobile */
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-}
-
-.probability-bar {
-  width: 100%;
-  max-width: 300px; /* Limit width on larger screens */
-  margin: 10px auto;
-}
-
-/* Media queries for responsive design */
-@media screen and (max-width: 768px) {
+  
   .fighter-form {
     flex-direction: column;
     padding: 10px;
@@ -303,7 +278,6 @@
   }
 }
 
-/* For very small screens */
 @media screen and (max-width: 320px) {
   .prediction-result {
     font-size: 12px;
