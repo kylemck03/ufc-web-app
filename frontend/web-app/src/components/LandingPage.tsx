@@ -126,6 +126,7 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="landing-container">
+      {/* <img src="/public/ufc-sphere-arena.png" alt="" className="background-image" /> */}
       <motion.section 
         className="hero-section"
         style={{ 
