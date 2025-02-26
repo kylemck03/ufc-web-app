@@ -4,7 +4,9 @@
   background-color: #1a1a1a;
   color: #ffffff;
   padding-top: 70px; 
-
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .App-header {
@@ -17,7 +19,7 @@
   position: fixed; 
   top: 0; 
   left: 0; 
-  right: 0;        
+  right: 0; 
   z-index: 1000;  
   width: 100%;  
 }
@@ -30,6 +32,26 @@
 .ufc-logo {
   height: 30px;
   width: auto;
+  position: absolute;
+  left: 50%; /* Center horizontally */
+  top: 50%;
+  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
+}
+
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1a1a1a;
+  padding: 15px;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end; /* Change from center to flex-end */
+  gap: 20px;
+  padding-right: 50px; /* Add more padding on the right */
 }
 
 .nav-links {
@@ -47,6 +69,7 @@
   transition: background-color 0.2s;
   display: flex;
   position: relative;
+  padding: 10px 20px;
 }
 
 .nav-link:hover {
