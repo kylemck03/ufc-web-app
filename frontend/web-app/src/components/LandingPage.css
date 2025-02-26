@@ -1,0 +1,243 @@
+.landing-container {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background-image: url('/public/ufc-sphere-arena.png'); /* Add back the background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* This creates a nice parallax effect */
+  overflow: hidden;
+  min-height: 100vh; /* Ensure full viewport height */
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(26, 26, 26, 0.937),
+    rgba(45, 45, 45, 0.9)
+  );
+  z-index: 1;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title-container {
+  margin-bottom: 2rem;
+  perspective: 1000px;
+}
+
+.animated-title {
+  display: inline-block;
+  font-size: 4rem;
+  color: #ffd700;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+}
+
+.animated-title span {
+  display: inline-block;
+  will-change: transform;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 300;  
+  letter-spacing: 2px; 
+  /* text-transform: uppercase;  */
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #cccccc;
+}
+
+.cta-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 40px;
+  background: linear-gradient(45deg, #ffd700, #ffed4a);
+  color: #1a1a1a;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.cta-button:hover {
+  background: linear-gradient(45deg, #ffed4a, #ffd700);
+}
+
+.cta-arrow {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 80px 120px;
+}
+
+.feature-card {
+  background: linear-gradient(145deg, #2d2d2d, #252525);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid transparent;
+  will-change: transform;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.feature-card:hover {
+  border-color: #ffd700;
+  background: linear-gradient(145deg, #323232, #2a2a2a);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.feature-card h3 {
+  color: #ffd700;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  color: #cccccc;
+  line-height: 1.5;
+}
+
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .features-section {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  .animated-title {
+    font-size: 2.5rem;
+    white-space: normal;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+.how-it-works-section {
+  padding: 80px 120px;
+  background: linear-gradient(180deg, #1a1a1a, #252525);
+}
+
+.section-title {
+  color: #ffd700;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.step-card {
+  background: linear-gradient(145deg, #2d2d2d, #252525);
+  padding: 30px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-number {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 4rem;
+  color: rgba(255, 215, 0, 0.1);
+  font-weight: bold;
+}
+
+.step-card h3 {
+  color: #ffd700;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.step-card p {
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .how-it-works-section {
+    padding: 40px 20px;
+  }
+
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}

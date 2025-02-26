@@ -74,7 +74,7 @@ const FighterSearch: React.FC<FighterSearchProps> = ({ onFighterSelect, label })
 
   useEffect(() => {
     // Load the CSV data when component mounts
-    fetch('/fighter_names.csv') // Adjust the path as necessary
+    fetch('/fighter_names.csv') 
       .then(response => response.text())
       .then(data => {
         // Parse CSV data

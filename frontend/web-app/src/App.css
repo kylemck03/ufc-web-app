@@ -1,15 +1,25 @@
-/* src/App.css */
 .App {
   text-align: center;
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding-top: 70px; 
+
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1a1a1a;
   padding: 20px;
-  color: white;
-  margin-bottom: 40px;
+  color: #ffd700;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0;        
+  z-index: 1000;  
+  width: 100%;  
 }
 
 .App-header h1 {
@@ -18,14 +28,28 @@
 }
 
 .ufc-logo {
-  height: 40px; 
+  height: 30px;
   width: auto;
 }
 
-.App-header p{
-  font-size: small;
+.nav-links {
+  position: absolute; 
+  right: 70px;
+  display: flex;
+  gap: 20px;
 }
 
-main {
-  padding: 0 20px;
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  display: flex;
+  position: relative;
+}
+
+.nav-link:hover {
+  background-color: #ffd700;
+  color: #1a1a1a;
 }
