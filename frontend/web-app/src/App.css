@@ -33,11 +33,11 @@
   height: 30px;
   width: auto;
   position: absolute;
-  left: 50%; /* Center horizontally */
-  top: 50%;
-  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
-  /* padding-top: 20px;
-  padding-bottom: 20px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* transform: translate(-50%, -50%); Center both horizontally and vertically */
+
 }
 
 .nav-container {
@@ -252,5 +252,61 @@
   /* Hide non-essential content on mobile */
   .desktop-only {
     display: none;
+  }
+}
+
+.prediction-result {
+  max-width: 100%; /* Ensure content doesn't overflow container */
+  padding: 20px;
+  margin: 20px auto;
+  word-wrap: break-word; /* Ensures text wraps instead of overflowing */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.prediction-details {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically on mobile */
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.probability-bar {
+  width: 100%;
+  max-width: 300px; /* Limit width on larger screens */
+  margin: 10px auto;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+  .fighter-form {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .fighter-select {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .vs-text {
+    margin: 10px 0;
+  }
+
+  .prediction-result {
+    font-size: 14px; /* Smaller font size for mobile */
+    padding: 10px;
+  }
+
+  .probability-bar {
+    width: 90%; /* Slightly smaller width on mobile */
+  }
+}
+
+/* For very small screens */
+@media screen and (max-width: 320px) {
+  .prediction-result {
+    font-size: 12px;
+    padding: 5px;
   }
 }
