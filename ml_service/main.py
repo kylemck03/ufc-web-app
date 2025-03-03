@@ -1,4 +1,4 @@
-import os
+from venv import logger
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
@@ -8,8 +8,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
-
+import logging
 
 
 app = FastAPI()
@@ -17,7 +16,7 @@ app = FastAPI()
 #Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080", "https://ufc-web-app.onrender.com", "https://ufc-web-app.vercel.app"],
+    allow_origins=["http://localhost:8080"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -94,6 +93,7 @@ async def predict(request: PredictionRequest):
         print(f"Fighter 2 data: {fighter2_data}")
 
         # Add logs before and after model prediction
+        logger.info("Making prediction...")
         # prediction logic...
 
         # Convert fighter stats to numpy arrays
@@ -159,31 +159,35 @@ async def predict(request: PredictionRequest):
         
         # Get predictions
         with torch.no_grad():
+            # Get model outputs for both fighters
             pred1 = model(fighter1_tensor)
             pred2 = model(fighter2_tensor)
-            prob1 = torch.nn.functional.softmax(pred1, dim=1)[:, 1]
-            prob2 = torch.nn.functional.softmax(pred2, dim=1)[:, 1]
-
-        print(f"Fighter 1 probability BEFORE FLOAT: {prob1}")
-        print(f"Fighter 2 probability BEFORE FLOAT: {prob2}")
-        
-        # Compare probabilities
-        fighter1_prob = float(prob1.item())
-        fighter2_prob = float(prob2.item())
-        
-        winner = "Fighter 1" if fighter1_prob > fighter2_prob else "Fighter 2"
-        winning_prob = max(fighter1_prob, fighter2_prob)
+            
+            # Get the raw logits (pre-softmax values)
+            logits1 = pred1[:, 1]  # Get win probability logit for fighter 1
+            logits2 = pred2[:, 1]  # Get win probability logit for fighter 2
+            
+            # Compare logits directly and apply softmax to their difference
+            comparison = torch.stack([logits1, logits2])
+            probabilities = torch.nn.functional.softmax(comparison, dim=0)
+            
+            # Convert to float
+            fighter1_prob = float(probabilities[0].item())
+            fighter2_prob = float(probabilities[1].item())
+            
+            winner = "Fighter 1" if fighter1_prob > fighter2_prob else "Fighter 2"
+            winning_prob = max(fighter1_prob, fighter2_prob)
         
         return PredictionResponse(
             winner=winner,
             probability=round(winning_prob * 100, 2),
-            fighter1_probability=fighter1_prob * 100,
-            fighter2_probability=fighter2_prob * 100
+            fighter1_probability=round(fighter1_prob * 100, 2),
+            fighter2_probability=round(fighter2_prob * 100, 2)
         )
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8001)
