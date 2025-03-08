@@ -220,20 +220,20 @@ const FighterForm: React.FC = () => {
             <div className="fighter-probability">
               <p>{formData.fighter1?.fighter_f_name} {formData.fighter1?.fighter_l_name}</p>
               <p className="probability">
-                {(prediction.fighter1_probability * 100).toFixed(1)}%
+                {(prediction.fighter1_probability).toFixed(2)}%
               </p>
             </div>
             <div className="winner-section">
               <p>Predicted Winner</p>
               <p className="winner">{prediction.winner}</p>
               <p className="overall-probability">
-                Confidence: {(prediction.probability * 100).toFixed(1)}%
+                Confidence: {(prediction.probability).toFixed(2)}%
               </p>
             </div>
             <div className="fighter-probability">
               <p>{formData.fighter2?.fighter_f_name} {formData.fighter2?.fighter_l_name}</p>
               <p className="probability">
-                {(prediction.fighter2_probability * 100).toFixed(1)}%
+                {(prediction.fighter2_probability).toFixed(2)}%
               </p>
             </div>
           </div>
